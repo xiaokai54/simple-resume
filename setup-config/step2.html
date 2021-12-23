@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width">
+
+	<meta name="robots" content="noindex,nofollow">
+	<title>phphomework › 安装配置文件</title>
+	<link rel="stylesheet" id="dashicons-css" href="../css/dashicons.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="buttons-css" href="../css/buttons.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="forms-css" href="../css/forms.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="l10n-css" href="../css/l10n.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="install-css" href="../css/install.min.css" type="text/css" media="all">
+</head>
+
+<body class="wp-core-ui">
+	<h1 class="screen-reader-text">配置您的数据库连接</h1>
+	<form method="post" action="../data/initialization.php">
+		<p>请在下方填写您的数据库连接信息。如果您不确定，请您完全卸载小皮面板重新安装。</p>
+		<table class="form-table" role="presentation">
+			<tbody>
+				<tr>
+					<th scope="row"><label for="dbname">数据库名</label></th>
+					<td><input name="dbname" id="dbname" type="text" aria-describedby="dbname-desc" size="25"
+							value="phphomework" autofocus=""></td>
+					<td id="dbname-desc">希望将phphomework安装到的数据库名称。注意：不要有<code>-</code></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="uname">用户名</label></th>
+					<td><input name="uname" id="uname" type="text" aria-describedby="uname-desc" size="25"
+							value="username"></td>
+					<td id="uname-desc">您的数据库用户名。</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pwd">密码</label></th>
+					<td><input name="pwd" id="pwd" type="text" aria-describedby="pwd-desc" size="25" value="password"
+							autocomplete="off"></td>
+					<td id="pwd-desc">您的数据库密码。</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="dbhost">数据库主机</label></th>
+					<td><input name="dbhost" id="dbhost" type="text" aria-describedby="dbhost-desc" size="25"
+							value="localhost"></td>
+					<td id="dbhost-desc">
+						如果<code>localhost</code>不能用，您通常可以从网络上寻找到解决办法。 </td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" name="language" value="zh_CN">
+		<p class="step"><input name="submit" type="submit" value="提交" class="button button-large"></p>
+	</form>
+	<script type="text/javascript" src="../js/jquery.min.js" id="jquery-core-js"></script>
+	<script type="text/javascript" src="../js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+	<script type="text/javascript" src="../js/language-chooser.min.js" id="language-chooser-js"></script>
+</body>
+
+</html>
