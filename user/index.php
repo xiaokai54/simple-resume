@@ -59,7 +59,7 @@ $info_user = mysqli_fetch_assoc($result);
 										<li><a href="index.php">关于我</a></li>
 										<li><a href="reference.php">参考</a></li>
 										<li><a href="search.php">搜索</a></li>
-										<li><a href="change-information.html">信息修改</a></li>
+										<li><a href="change-information.php">信息修改</a></li>
 										<li><a href="log-out.php"><button class="btn btn-sm">退出登录</button></a></li>
 									</ul>
 								</nav>

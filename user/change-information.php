@@ -120,7 +120,7 @@ if (strlen($cookie_user_name) == 0){
 							</div>
 
 							<div class="padd-box-sm">
-								<form action="../data/change-information.php" method="post" class="contact-form">
+								<form action="../data/change.php" method="post" class="contact-form">
 									<div class="form-group">
 										<label class="form-label" for="user_name">昵称</label>
 										<div class="form-item-wrap">
