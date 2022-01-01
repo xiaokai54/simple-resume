@@ -1,5 +1,5 @@
 <?php
-// 定义主配置
+// 定义主配置文件
 $config_file = 'config.php';
 
 if (file_exists($config_file)) {

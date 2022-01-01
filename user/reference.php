@@ -1,6 +1,12 @@
 ﻿<?php
-include_once "../data/con_mysql.php";
 $cookie_user_name = $_COOKIE["User_name"];
+// 判断用户是否登录过
+if (strlen($cookie_user_name) == 0){
+    header("refresh:0;url='../login'");
+    exit();
+}
+
+include_once "../data/con_mysql.php";
 
 $str = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
 $result = mysqli_query($conn, $str);
@@ -17,8 +23,8 @@ $info_user = mysqli_fetch_assoc($result);
 	<title>Reference</title>
 	<meta name="description" content="">
 
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="shortcut icon" href="favicon.ico">
+<!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+<!--	<link rel="shortcut icon" href="favicon.ico">-->
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">

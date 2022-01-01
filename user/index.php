@@ -21,8 +21,8 @@ $info_user = mysqli_fetch_assoc($result);
 	<title>About Me</title>
 	<meta name="description" content="">
 
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="shortcut icon" href="favicon.ico">
+<!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+<!--	<link rel="shortcut icon" href="favicon.ico">-->
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
