@@ -3,7 +3,7 @@
 $config_file = 'config.php';
 
 if (file_exists($config_file)) {
-	// 判断用户是否登录过
+	// 判断用户是否有过登录操作
 	if (strlen($_COOKIE["User_name"]) == 0){
 		header("refresh:0;url='./login'");
 		exit();

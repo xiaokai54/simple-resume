@@ -6,7 +6,7 @@ if (strlen($cookie_user_name) == 0){
 	exit();
 }
 include_once "../data/con_mysql.php";
-$str = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+$str = "SELECT * FROM `user_info` where user_name = '$cookie_user_name'";
 $result = mysqli_query($conn, $str);
 $info_user = mysqli_fetch_assoc($result);
 ?>
