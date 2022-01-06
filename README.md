@@ -22,9 +22,9 @@ git clone git@github.com:xiaokai54/simple-resume.git
 /** The name of the database */
 define('DB_NAME', 'phphomework');
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'username');
 /** MySQL database password */
-define('DB_PASSWORD', '123456');
+define('DB_PASSWORD', 'password');
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 ?>
