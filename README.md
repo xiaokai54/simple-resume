@@ -30,8 +30,8 @@ define('DB_HOST', 'localhost');
 ?>
 ```
 
-###更新日志
-#####2022-01-06
+### 更新日志
+##### 2022-01-06
 - 增加自定义初始账户设置，用户可以自定义初始用户名和密码 
 - 增加系统重置功能，会删除数据库和配置文件（<font color=red>高危操作</font>）<br>
 `http://localhost/simple-resume/reset-config.php` 无其他入口，防止误操作
