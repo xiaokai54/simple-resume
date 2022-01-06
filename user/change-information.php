@@ -103,7 +103,7 @@ if (strlen($cookie_user_name) == 0){
 
 
 				<div class="ace-paper-stock">
-					<main class="ace-paper clearfix" text-align：center；>
+					<main class="ace-paper clearfix" style="text-align: center;">
 						<div class="ace-paper-cont clear-mrg">
 
 							<!-- START: PAGE CONTENT -->
@@ -120,7 +120,7 @@ if (strlen($cookie_user_name) == 0){
 							</div>
 
 							<div class="padd-box-sm">
-								<form action="../data/change.php" method="post" class="contact-form">
+								<form action="../data/change.php" method="post" class="contact-form" autocomplete="off" novalidate="novalidate">
 									<div class="form-group">
 										<label class="form-label" for="user_name">昵称</label>
 										<div class="form-item-wrap">
@@ -170,7 +170,7 @@ if (strlen($cookie_user_name) == 0){
 									<div class="form-group">
 										<label class="form-label" for="user_website">个人网站</label>
 										<div class="form-item-wrap">
-											<input id="user_website" class="form-item" type="text" name="user_website">
+											<input id="user_website" class="form-item" type="url" name="user_website">
 										</div>
 									</div>
 
@@ -181,12 +181,12 @@ if (strlen($cookie_user_name) == 0){
 										</div>
 									</div>
 									<div class="form-submit form-item-wrap">
-										<input class="btn btn-primary btn-lg" type="submit" value="提交修改">
+										<input class="btn btn-primary btn-lg" type="submit" name="submit" value="提交修改">
 									</div>
 								</form>
 								<div class="form-submit form-item-wrap">
 									<a href="../cpassword">
-										<input class="btn btn-primary btn-lg" type="submit" value="修改密码">
+										<input class="btn btn-primary btn-lg" type="submit" name="submit" value="修改密码">
 									</a>
 								</div>
 							</div>
@@ -236,6 +236,7 @@ if (strlen($cookie_user_name) == 0){
 
 	<script type="text/javascript" src="js/options.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../js/ban_dev.js"></script>
 </body>
 
 </html>

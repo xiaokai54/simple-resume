@@ -13,5 +13,5 @@ if (file_exists($config_file)) {
 	exit();
 } else {
 //	不存在则跳转到安装设置页面
-	header("refresh:0;url='./setup-config/step1.html'");
+	header("refresh:0;url='./install'");
 }

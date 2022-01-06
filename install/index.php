@@ -1,5 +1,22 @@
+<?php
+/* 防止用户直接访问该文件 */
+
+// 定义主配置文件
+$config_file = '../config.php';
+
+if (file_exists($config_file)) {
+	// 判断用户是否有过登录操作
+	if (strlen($_COOKIE["User_name"]) == 0){
+		header("refresh:0;url='../login'");
+		exit();
+	}
+	// 文件存在并登录过则跳转到用户信息界面（默认用户admin）
+	header("refresh:0;url=../user");
+	exit();
+}
+?>
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,7 +32,7 @@
 </head>
 
 <body class="wp-core-ui">
-	<h1 class="screen-reader-text">开始之前</h1>
+	<h1>开始之前</h1>
 	<p>在开始前，我们需要您数据库的一些信息。请准备好如下信息。</p>
 	<ol>
 		<li>数据库名</li>
@@ -24,10 +41,11 @@
 		<li>数据库主机</li>
 	</ol>
 
-	<p class="step"><a href="./step2.html" class="button button-large">现在就开始！</a></p>
+	<p class="step"><a href="init.php" class="button button-large">现在就开始！</a></p>
 	<script type="text/javascript" src="../js/jquery.min.js" id="jquery-core-js"></script>
 	<script type="text/javascript" src="../js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
 	<script type="text/javascript" src="../js/language-chooser.min.js" id="language-chooser-js"></script>
+	<script type="text/javascript" src="../js/ban_dev.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,8 @@
 <?php
+if(!isset($_POST['submit'])) {
+	header("refresh:0;url=../");
+	exit();
+}
 header("Content-Type:text/html;charset=utf-8");
 //在后端获取前端表单数据的方法是使用全局数组$_GET或$_POST
 $sql_user_nane =  $_COOKIE['User_name'];
@@ -50,18 +54,18 @@ if (
 	$sql = "select * from .`user_info` where user_name = '$user_name'";
 	$result_user_nickname = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result_user_nickname)){
-		echo "<script>alert('此昵称已经存在，请重新输入');history.back();</script>";
+		echo "<script>alert('此昵称已经存在\\n请重新输入');history.back();</script>";
 		exit();
 	}
 	//判断邮箱是否重复（是否被占用）
 	$sql = "select * from .`user_info` where user_email = '$user_email'";
 	$result_user_email = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result_user_email)){
-		echo "<script>alert('此邮箱已被注册，请重新输入');history.back();</script>";
+		echo "<script>alert('此邮箱已被注册\\n请重新输入');history.back();</script>";
 		exit();
 	}
 	if (!preg_match('/[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/', $user_website)) {
-		echo "<script>alert('网站域名不合法，请重新输入');history.back();</script>";
+		echo "<script>alert('网站域名不合法\\n请重新输入');history.back();</script>";
 	}
 }
 

@@ -252,7 +252,7 @@
 				</div>
 				<div class="form-action" style="border-top:none;">
 					<span>
-						<button type="submit" href="#" style="width: 100%;">注册</button>
+						<button type="submit" name="submit" style="width: 100%;">注册</button>
 					</span>
 				</div>
 			</form>

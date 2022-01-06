@@ -243,7 +243,7 @@
 				</div>
 				<div class="form-action" style="border-top:none;">
 					<span>
-						<button type="submit" style="width: 100%;">修改密码</button>
+						<button type="submit" name="submit" style="width: 100%;">修改密码</button>
 					</span>
 				</div>
 			</form>
