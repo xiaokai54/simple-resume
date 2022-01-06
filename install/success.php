@@ -1,5 +1,8 @@
+<?php
+
+?>
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,14 +18,14 @@
 </head>
 
 <body class="wp-core-ui">
-	<h1 class="screen-reader-text">数据库连接成功</h1>
+	<h1>数据库连接成功</h1>
 	<p>不错。您完成了安装过程中重要的一步，phphomework现在已经可以连接数据库了。如果您准备好了的话，现在就…</p>
 
-	<p class="step"><a href="../register" class="button button-large">点击注册</a></p>
+	<p class="step"><a href="../user/install.php" class="button button-large">点击安装</a></p>
 	<script type="text/javascript" src="../js/jquery.min.js" id="jquery-core-js"></script>
 	<script type="text/javascript" src="../js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
 	<script type="text/javascript" src="../js/language-chooser.min.js" id="language-chooser-js"></script>
-
+	<script type="text/javascript" src="../js/ban_dev.js"></script>
 </body>
 
 </html>

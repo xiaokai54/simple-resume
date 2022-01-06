@@ -1,4 +1,8 @@
 <?php
+if(!isset($_POST['submit'])) {
+	header("refresh:0;url=../");
+	exit();
+}
 header("Content-Type:text/html;charset=utf-8");
 //在后端获取前端表单数据的方法是使用全局数组$_GET或$_POST
 $user_name = $_POST['user_name'];
@@ -20,41 +24,41 @@ if (strlen($user_name) == 0 ||
 } else {
 	// 正则匹配用户名
 	if (!preg_match('/^[\u4E00-\u9FA5A-Za-z0-9_]{3,16}$/', $user_name)) {
-		echo "<script>alert('用户名不合法，只能是中文、英文、数字包括下划线，长度为3到16个字符！');history.back();</script>";
+		echo "<script>alert('用户名不合法\\n只能是中文、英文、数字包括下划线\\n长度为3到16个字符');history.back();</script>";
 		exit();
 	}
 	// 正则匹配密码
 	if (!preg_match('/^[a-zA-Z0-@]{6,18}$/', $user_password)) {
-		echo "<script>alert('密码不合法，只能是大小写字符和数字，以及@构成，长度为6到18个字符！');history.back();</script>";
+		echo "<script>alert('密码不合法\\n只能是大小写字符和数字\\n以及@构成\\n长度为6到18个字符');history.back();</script>";
 		exit();
 	}
 	// 正则匹配邮箱
 	if (!preg_match('/^\w+([-+.]\w+)*@\w+([-.]\w+)*$/', $user_email)) {
-		echo "<script>alert('邮箱不合法，请重新输入！');history.back();</script>";
+		echo "<script>alert('邮箱不合法\\n请重新输入');history.back();</script>";
 		exit();
 	}
 	// 正则匹配手机号
 	if(!preg_match('/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/',$user_tel)){
-		echo "<script>alert('手机号不合法，请重新输入！');history.back();</script>";
+		echo "<script>alert('手机号不合法\\n请重新输入');history.back();</script>";
 		exit();
 	}
 	// 确认密码
 	if (!($user_password == $user_confirm_password)) {
-		echo "<script>alert('两次输入的密码不一样，请重新输入！');history.back();</script>";
+		echo "<script>alert('两次输入的密码不一样\\n请重新输入');history.back();</script>";
 		exit();
 	}
 	//判断昵称是否重复（是否被占用）
 	$sql = "select * from .`user_info` where user_name = '$user_name'";
 	$result_user_nickname = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result_user_nickname)){
-		echo "<script>alert('此昵称已经存在，请重新输入');history.back();</script>";
+		echo "<script>alert('此昵称已经存在\\n请重新输入');history.back();</script>";
 		exit();
 	}
 	//判断邮箱是否重复（是否被占用）
 	$sql = "select * from .`user_info` where user_email = '$user_email'";
 	$result_user_email = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result_user_email)){
-		echo "<script>alert('此邮箱已被注册，请重新输入');history.back();</script>";
+		echo "<script>alert('此邮箱已被注册\\n请重新输入');history.back();</script>";
 		exit();
 	}
 }
@@ -71,7 +75,7 @@ $count_user_info = mysqli_fetch_assoc($result_count_user_info);
 
 // 当两个表的数据量不同时无法进行注册操作
 if (!($count_user_info == $count_login_info)){
-	echo "<script>alert('数据库数据错误，请联系网站管理员！');history.back();</script>";
+	echo "<script>alert('数据库数据错误\\n请联系网站管理员!!!');history.back();</script>";
 	exit();
 }
 
@@ -125,9 +129,9 @@ mysqli_close($conn);
 
 // 判断注册操作是否成功
 if ($result_login_info && $result_user_info){
-	echo "<script>alert('注册成功！');location.href='../login';</script>";
+	echo "<script>alert('注册成功!!!');location.href='../login';</script>";
 }else{
-	echo "<script>alert('注册失败！请联系网站管理员');history.back();</script>";
+	echo "<script>alert('注册失败\\n请联系网站管理员!!!');history.back();</script>";
 }
 exit();
 ?>

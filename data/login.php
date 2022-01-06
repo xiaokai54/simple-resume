@@ -1,4 +1,8 @@
 <?php
+if(!isset($_POST['submit'])) {
+	header("refresh:0;url=../");
+	exit();
+}
 header("Content-Type:text/html;charset=utf-8");
 //在后端获取前端表单数据的方法是使用全局数组$_GET或$_POST
 $username = $_POST['username'];
@@ -13,18 +17,18 @@ else{
 	if (strpos($username,'@')){
 		// 正则匹配邮箱
 		if (!preg_match('/^\w+([-+.]\w+)*@\w+([-.]\w+)*$/', $username)) {
-			echo "<script>alert('输入的邮箱不合法，请重新输入！');history.back();</script>";
+			echo "<script>alert('输入的邮箱不合法\\n请重新输入');history.back();</script>";
 			exit();
 		}
 	}else{
 		// 正则匹配昵称（用户名）
 		if(!preg_match('/^[\u4E00-\u9FA5A-Za-z0-9_]+$/',$username)){
-			echo "<script>alert('用户名，请重新输入！');history.back();</script>";
+			echo "<script>alert('用户名不合法\\n请重新输入');history.back();</script>";
 			exit();
 		}
 	}  // 正则匹配密码
 	if(!preg_match('/^[a-zA-Z0-9_@]{6,18}$/',$password)){
-		echo "<script>alert('用户名或密码错误，请重新输入！');history.back();</script>";
+		echo "<script>alert('密码不合法\\n请重新输入');history.back();</script>";
 		exit();
 	}
 }
@@ -53,12 +57,13 @@ if($result){
 		// cookie 缓存用户名
 		setcookie("User_name",$result_user["user_name"],time()+1200,'/');
 		exit();
+	}else{
+		// 密码错误
+		echo "<script>alert('用户名或密码错误\\n请重新输入');history.back();</script>";
 	}
-	// 密码错误
-	echo "<script>alert('用户名或密码错误，请重新输入！');history.back();</script>";
-}
-else{
-	echo "<script>alert('用户名或密码错误，请注册！');location.href='../register';</script>";
+}else{
+	echo "<script>alert('用户名或密码错误\\n请注册');</script>";
+	echo "<script>alert('即将自动跳转至注册页面');location.href='../register';</script>";
 }
 exit();
 ?>

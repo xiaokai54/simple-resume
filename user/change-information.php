@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<?php
+$cookie_user_name = $_COOKIE["User_name"];
+// 判断用户是否登录过
+if (strlen($cookie_user_name) == 0){
+    header("refresh:0;url='../login'");
+    exit();
+}
+?>
+<!DOCTYPE html>
 <html lang="zh-CN" class="ace ace-card-on ace-tab-nav-on ace-main-nav-on ace-sidebar-on" data-theme-color="#c0e3e7">
 
 <head>
@@ -9,8 +17,8 @@
 	<title>Change Information</title>
 	<meta name="description" content="">
 
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="shortcut icon" href="favicon.ico">
+<!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+<!--	<link rel="shortcut icon" href="favicon.ico">-->
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
@@ -35,7 +43,7 @@
 				<div class="ace-head-container ace-container">
 					<div class="ace-head-row">
 						<div id="ace-head-col1" class="ace-head-col text-left">
-							<a id="ace-logo" class="ace-logo" href="about.php">
+							<a id="ace-logo" class="ace-logo" href="../user">
 								<img src="img/uploads/brand/logo.svg" alt="ace resume"><span>changes</span>
 							</a>
 						</div>
@@ -48,7 +56,7 @@
 										<!--<li><a href="portfolio.html">portfolio</a>-->
 										<li><a href="reference.php">参考</a></li>
 										<li><a href="search.php">搜索</a></li>
-										<li><a href="change-information.html">信息修改</a></li>
+										<li><a href="change-information.php">信息修改</a></li>
 										<li><a href="log-out.php"><button class="btn btn-sm">退出登录</button></a></li>
 									</ul>
 								</nav>
@@ -63,27 +71,27 @@
 		<nav id="ace-nav-sm" class="ace-nav hidden-lg hidden-md">
 			<ul class="clear-list">
 				<li>
-					<a href="index.php" data-tooltip="Home"><img class="avatar avatar-42"
+					<a href="" data-tooltip="Home"><img class="avatar avatar-42"
 							src="img/uploads/avatar/avatar-42x42.png" alt=""></a>
 				</li>
 				<li>
-					<a href="experience.html" data-tooltip="Experience"><span
+					<a href="" data-tooltip="Experience"><span
 							class="ace-icon ace-icon-experience"></span></a>
 				</li>
 				<li>
-					<a href="portfolio.html" data-tooltip="Portfolio"><span
+					<a href="" data-tooltip="Portfolio"><span
 							class="ace-icon ace-icon-portfolio"></span></a>
 				</li>
 				<li>
-					<a href="reference.php" data-tooltip="References"><span
+					<a href="" data-tooltip="References"><span
 							class="ace-icon ace-icon-references"></span></a>
 				</li>
 				<li class="active">
-					<a href="change-information.html" data-tooltip="Contact"><span
+					<a href="" data-tooltip="Contact"><span
 							class="ace-icon ace-icon-contact"></span></a>
 				</li>
 				<li>
-					<a href="category.html" data-tooltip="Blog"><span class="ace-icon ace-icon-blog"></span></a>
+					<a href="" data-tooltip="Blog"><span class="ace-icon ace-icon-blog"></span></a>
 				</li>
 			</ul>
 		</nav><!-- #ace-tab-nav-sm -->
@@ -95,7 +103,7 @@
 
 
 				<div class="ace-paper-stock">
-					<main class="ace-paper clearfix" text-align：center；>
+					<main class="ace-paper clearfix" style="text-align: center;">
 						<div class="ace-paper-cont clear-mrg">
 
 							<!-- START: PAGE CONTENT -->
@@ -112,23 +120,19 @@
 							</div>
 
 							<div class="padd-box-sm">
-								<form action="../data/change-information.php" method="post" class="contact-form">
-
+								<form action="../data/change.php" method="post" class="contact-form" autocomplete="off" novalidate="novalidate">
 									<div class="form-group">
 										<label class="form-label" for="user_name">昵称</label>
 										<div class="form-item-wrap">
 											<input id="user_name" class="form-item" type="text" name="user_name">
 										</div>
 									</div>
-
 									<div class="form-group">
 										<label class="form-label" for="user_fullname">姓名</label>
 										<div class="form-item-wrap">
-											<input id="user_fullname" class="form-item" type="text"
-												name="user_fullname">
+											<input id="user_fullname" class="form-item" type="text" name="user_fullname">
 										</div>
 									</div>
-
 									<div class="form-group">
 										<label class="form-label" for="user_address">用户地址</label>
 										<div class="form-item-wrap">
@@ -139,23 +143,21 @@
 									<div class="form-group">
 										<label class="form-label" for="user_tel">手机号码</label>
 										<div class="form-item-wrap">
-											<input id="user_tel" class="form-item" type="text" name="user_tel">
+											<input id="user_tel" class="form-item" type="tel" name="user_tel">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="form-label" for="user_email">用户邮箱</label>
 										<div class="form-item-wrap">
-											<input id="user_email" class="form-item" type="email" required="required"
-												name="user_email">
+											<input id="user_email" class="form-item" type="email" name="user_email">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="form-label" for="user_occupation">用户职业</label>
 										<div class="form-item-wrap">
-											<input id="user_occupation" class="form-item" type="text"
-												required="required" name="user_occupation">
+											<input id="user_occupation" class="form-item" type="text" name="user_occupation">
 										</div>
 									</div>
 
@@ -168,7 +170,7 @@
 									<div class="form-group">
 										<label class="form-label" for="user_website">个人网站</label>
 										<div class="form-item-wrap">
-											<input id="user_website" class="form-item" type="text" name="user_website">
+											<input id="user_website" class="form-item" type="url" name="user_website">
 										</div>
 									</div>
 
@@ -179,17 +181,19 @@
 										</div>
 									</div>
 									<div class="form-submit form-item-wrap">
-										<input class="btn btn-primary btn-lg" type="submit" value="提交修改">
+										<input class="btn btn-primary btn-lg" type="submit" name="submit" value="提交修改">
 									</div>
 								</form>
 								<div class="form-submit form-item-wrap">
 									<a href="../cpassword">
-										<input class="btn btn-primary btn-lg" type="submit" value="修改密码">
+										<input class="btn btn-primary btn-lg" type="submit" name="submit" value="修改密码">
 									</a>
 								</div>
 							</div>
 
-							<div id="map" data-latitude="50.84592" data-longitude="4.366859999999974"></div>
+                            <div style="height: 100px"></div>
+
+<!--							<div id="map" data-latitude="50.84592" data-longitude="4.366859999999974"></div>-->
 
 							<!-- END: PAGE CONTENT -->
 
@@ -232,6 +236,7 @@
 
 	<script type="text/javascript" src="js/options.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../js/ban_dev.js"></script>
 </body>
 
 </html>

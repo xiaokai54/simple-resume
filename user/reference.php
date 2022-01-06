@@ -1,8 +1,14 @@
 ﻿<?php
-include_once "../data/con_mysql.php";
 $cookie_user_name = $_COOKIE["User_name"];
+// 判断用户是否登录过
+if (strlen($cookie_user_name) == 0){
+    header("refresh:0;url='../login'");
+    exit();
+}
 
-$str = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+include_once "../data/con_mysql.php";
+
+$str = "SELECT * FROM `user_info` where user_name = '$cookie_user_name'";
 $result = mysqli_query($conn, $str);
 $info_user = mysqli_fetch_assoc($result);
 ?>
@@ -17,8 +23,8 @@ $info_user = mysqli_fetch_assoc($result);
 	<title>Reference</title>
 	<meta name="description" content="">
 
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="shortcut icon" href="favicon.ico">
+<!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+<!--	<link rel="shortcut icon" href="favicon.ico">-->
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
@@ -56,7 +62,7 @@ $info_user = mysqli_fetch_assoc($result);
 										<!--<li><a href="portfolio.html">portfolio</a>-->
 										<li><a href="reference.php">参考</a></li>
 										<li><a href="search.php">搜索</a></li>
-										<li><a href="change-information.html">信息修改</a></li>
+										<li><a href="change-information.php">信息修改</a></li>
 										<li><a href="log-out.php"><button class="btn btn-sm">退出登录</button></a></li>
 									</ul>
 								</nav>
@@ -77,24 +83,24 @@ $info_user = mysqli_fetch_assoc($result);
 		<nav id="ace-nav-sm" class="ace-nav hidden-lg hidden-md">
 			<ul class="clear-list">
 				<li>
-					<a href="index.php" data-tooltip="Home"><img class="avatar avatar-42"
+					<a href="" data-tooltip="Home"><img class="avatar avatar-42"
 																 src="img/uploads/avatar/avatar-42x42.png" alt=""></a>
 				</li>
 				<li>
-					<a href="experience.html" data-tooltip="Experience"><span
+					<a href="" data-tooltip="Experience"><span
 							class="ace-icon ace-icon-experience"></span></a>
 				</li>
 				<li>
-					<a href="portfolio.html" data-tooltip="Portfolio"><span
+					<a href="" data-tooltip="Portfolio"><span
 							class="ace-icon ace-icon-portfolio"></span></a>
 				</li>
 				<li class="active">
-					<a href="reference.php" data-tooltip="References"><span
+					<a href="" data-tooltip="References"><span
 							class="ace-icon ace-icon-references"></span></a>
 				</li>
 			
 				<li>
-					<a href="category.html" data-tooltip="Blog"><span class="ace-icon ace-icon-blog"></span></a>
+					<a href="" data-tooltip="Blog"><span class="ace-icon ace-icon-blog"></span></a>
 				</li>
 			</ul>
 		</nav><!-- #ace-tab-nav-sm -->
@@ -129,27 +135,27 @@ $info_user = mysqli_fetch_assoc($result);
 							<nav id="ace-nav" class="ace-nav">
 								<ul class="clear-list">
 									<li>
-										<a href="index.php" data-tooltip="Home"><img class="avatar avatar-42"
+										<a href="" data-tooltip="Home"><img class="avatar avatar-42"
 																					 src="img/uploads/avatar/avatar-42x42.png" alt=""></a>
 									</li>
 									<li>
-										<a href="experience.html" data-tooltip="Experience"><span
+										<a href="" data-tooltip="Experience"><span
 												class="ace-icon ace-icon-experience"></span></a>
 									</li>
 									<li>
-										<a href="portfolio.html" data-tooltip="Portfolio"><span
+										<a href="" data-tooltip="Portfolio"><span
 												class="ace-icon ace-icon-portfolio"></span></a>
 									</li>
 									<li class="active">
-										<a href="reference.php" data-tooltip="References"><span
+										<a href="" data-tooltip="References"><span
 												class="ace-icon ace-icon-references"></span></a>
 									</li>
 									<li>
-										<a href="change-information.html" data-tooltip="Contact"><span
+										<a href="" data-tooltip="Contact"><span
 												class="ace-icon ace-icon-contact"></span></a>
 									</li>
 									<li>
-										<a href="category.html" data-tooltip="Blog"><span
+										<a href="" data-tooltip="Blog"><span
 												class="ace-icon ace-icon-blog"></span></a>
 									</li>
 								</ul>

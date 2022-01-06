@@ -1,5 +1,22 @@
+<?php
+/* 防止用户直接访问该文件 */
+
+// 定义主配置文件
+$config_file = '../config.php';
+
+if (file_exists($config_file)) {
+	// 判断用户是否有过登录操作
+	if (strlen($_COOKIE["User_name"]) == 0){
+		header("refresh:5;url='../login'");
+		exit();
+	}
+	// 文件存在并登录过则跳转到用户信息界面（默认用户admin，默认密码admin@123）
+	header("refresh:5;url=../user");
+	exit();
+}
+?>
 <!DOCTYPE html>
-<html lang="zh-CN" xml:lang="zh-CN">
+<html lang="zh-CN">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -137,7 +154,7 @@
 			<li>您确定数据库服务器在运行吗？</li>
 		</ul>
 		<p></p>
-		<p class="step"><a href="step2.html" class="button button-large">重试</a></p>
+		<p class="step"><a href="init.php" class="button button-large">重试</a></p>
 	</div>
 
 </body>

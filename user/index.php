@@ -6,7 +6,7 @@ if (strlen($cookie_user_name) == 0){
 	exit();
 }
 include_once "../data/con_mysql.php";
-$str = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+$str = "SELECT * FROM `user_info` where user_name = '$cookie_user_name'";
 $result = mysqli_query($conn, $str);
 $info_user = mysqli_fetch_assoc($result);
 ?>
@@ -21,8 +21,8 @@ $info_user = mysqli_fetch_assoc($result);
 	<title>About Me</title>
 	<meta name="description" content="">
 
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="shortcut icon" href="favicon.ico">
+<!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+<!--	<link rel="shortcut icon" href="favicon.ico">-->
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
@@ -59,7 +59,7 @@ $info_user = mysqli_fetch_assoc($result);
 										<li><a href="index.php">关于我</a></li>
 										<li><a href="reference.php">参考</a></li>
 										<li><a href="search.php">搜索</a></li>
-										<li><a href="change-information.html">信息修改</a></li>
+										<li><a href="change-information.php">信息修改</a></li>
 										<li><a href="log-out.php"><button class="btn btn-sm">退出登录</button></a></li>
 									</ul>
 								</nav>
