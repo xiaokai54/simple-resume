@@ -39,5 +39,5 @@ if (isset($_POST['submit'])){
 	$sql = "DROP DATABASE $database_name";
 	mysqli_query($conn,$sql);
 	unlink("config.php");
-	header("refresh:0;url='./install'");
+	header("refresh:0;url='./'");
 }

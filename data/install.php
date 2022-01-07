@@ -85,7 +85,7 @@ $result_user_install = mysqli_query($conn, $sql_user_info);
 mysqli_close($conn);
 // success
 if ($result_login_install && $result_user_install){
-	header("refresh:0;url='../login'");
+	header("refresh:0;url='../'");
 
 }else{
 	echo "<script>alert('安装失败\\n联系网站管理员');history.back();</script>";

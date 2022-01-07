@@ -53,7 +53,7 @@ $confirm_password = password_verify($password,$result_user["user_password"]);
 if($result){
 	// 密码正确
 	if ($confirm_password){
-		echo "<script>alert('登录成功！');location.href='../user';</script>";
+		echo "<script>alert('登录成功！');location.href='../';</script>";
 		// cookie 缓存用户名
 		setcookie("User_name",$result_user["user_name"],time()+1200,'/');
 		exit();

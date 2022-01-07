@@ -148,7 +148,7 @@
 		}
 
 		.sprt-eagle {
-			background-image: url(../img/sprt_eagle.png);
+			background-image: url(./img/sprt_eagle.png);
 			background-repeat: no-repeat;
 			display: inline-block;
 			vertical-align: bottom;
@@ -217,130 +217,130 @@
 </head>
 
 <body>
-	<header>
-		<h1>登录</h1>
-	</header>
-	<section>
-		<div class="eagel-box">
-			<i class="sprt-eagle hand-left"></i>
-			<i class="sprt-eagle head"></i>
-			<i class="sprt-eagle hand-right"></i>
-		</div>
-		<div class="form-box">
+<header>
+	<h1>登录</h1>
+</header>
+<section>
+	<div class="eagel-box">
+		<i class="sprt-eagle hand-left"></i>
+		<i class="sprt-eagle head"></i>
+		<i class="sprt-eagle hand-right"></i>
+	</div>
+	<div class="form-box">
 
-			<p class="message-box"></p>
-			<form action="../data/login.php" method="post">
-				<div class="form-fields">
-					<p>
-						<input class="icoTip ico-account" type="text" name="username" placeholder="账号 | 邮箱 | 手机号">
-					</p>
-					<p>
-						<input class="icoTip ico-password" name="password" type="password" placeholder="密码">
-					</p>
-				</div>
-				<div class="form-action">
+		<p class="message-box"></p>
+		<form action="./data/login.php" method="post">
+			<div class="form-fields">
+				<p>
+					<input class="icoTip ico-account" type="text" name="username" placeholder="账号 | 邮箱 | 手机号">
+				</p>
+				<p>
+					<input class="icoTip ico-password" name="password" type="password" placeholder="密码">
+				</p>
+			</div>
+			<div class="form-action">
 					<span>
-						<a href="../cpassword">忘记密码？</a>
+						<a href="./cpassword">忘记密码？</a>
 					</span>
-					<span>
-						<a href="../register">点击注册</a>
+				<span>
+						<a href="./register">点击注册</a>
 					</span>
 
-				</div>
-				<div class="form-action" style="border-top:none;">
+			</div>
+			<div class="form-action" style="border-top:none;">
 					<span>
 						<button type="submit" name="submit" style="width: 100%;">登录</button>
 					</span>
-				</div>
-			</form>
-		</div>
-	</section>
+			</div>
+		</form>
+	</div>
+</section>
 
-	<footer>
-		&copy;phphomework 2021-2021 All Rights Reservered.
-	</footer>
-	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-	<script>
-		var eagleLeftHandEL = $(".hand-left");
-		var eagleRightHandEL = $(".hand-right");
-		var eagleHandHidedStatus = [{
-			left: 45,
-			bottom: 6
-		}, {
-			left: -45,
-			bottom: 6
-		}];
-		$("input[type=password]").focus(function() {
-			eagleLeftHandEL.animate(eagleHandHidedStatus[0], {
-				step: hidingStep,
-				duration: 500
-			});
-			eagleRightHandEL.animate(eagleHandHidedStatus[1], {
-				step: hidingStep,
-				duration: 500,
-				complete: function() {
-					setTimeout(eaglePeek, 1000);
-				}
-			});
-		}).blur(function() {
-			//立即结束动画
-			eagleRightHandEL.stop(true, true);
-			eagleLeftHandEL.stop(true, true);
+<footer>
+	&copy;phphomework 2021-2021 All Rights Reservered.
+</footer>
+<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+<script>
+    var eagleLeftHandEL = $(".hand-left");
+    var eagleRightHandEL = $(".hand-right");
+    var eagleHandHidedStatus = [{
+        left: 45,
+        bottom: 6
+    }, {
+        left: -45,
+        bottom: 6
+    }];
+    $("input[type=password]").focus(function() {
+        eagleLeftHandEL.animate(eagleHandHidedStatus[0], {
+            step: hidingStep,
+            duration: 500
+        });
+        eagleRightHandEL.animate(eagleHandHidedStatus[1], {
+            step: hidingStep,
+            duration: 500,
+            complete: function() {
+                setTimeout(eaglePeek, 1000);
+            }
+        });
+    }).blur(function() {
+        //立即结束动画
+        eagleRightHandEL.stop(true, true);
+        eagleLeftHandEL.stop(true, true);
 
 
-			eagleLeftHandEL[0].hideStatus = 0;
-			eagleLeftHandEL[0].className = "sprt-eagle hand-left";
-			eagleLeftHandEL[0].style = "";
+        eagleLeftHandEL[0].hideStatus = 0;
+        eagleLeftHandEL[0].className = "sprt-eagle hand-left";
+        eagleLeftHandEL[0].style = "";
 
-			eagleRightHandEL[0].hideStatus = 0;
-			eagleRightHandEL[0].className = "sprt-eagle hand-right";
-			eagleRightHandEL[0].style = "";
+        eagleRightHandEL[0].hideStatus = 0;
+        eagleRightHandEL[0].className = "sprt-eagle hand-right";
+        eagleRightHandEL[0].style = "";
 
-		});
-		var eagleShow = function() {
-			$(".eagel-box").animate({
-				bottom: -6
-			}, 1000, function() {
-				this.style.zIndex = 100;
-			});
-		};
-		/**
-		 * the hiding step control
-		 * @param {Object} now
-		 * @param {Object} fx
-		 */
-		var hidingStep = function(now, fx) {
-			if (fx.prop === "bottom") {
-				now = Math.floor(now);
-				if (now === 3 && this.hideStatus !== 1) {
-					this.classList.add("hiding");
-					this.hideStatus = 1;
-				} else if (now === 5 && this.hideStatus !== 2) {
-					this.classList.remove("hiding");
-					this.classList.add("hided");
-					this.hideStatus = 2;
-				}
-			}
-		};
-		/**
-		 * the eagel peak
-		 */
-		var eaglePeek = function() {
-			if (eagleRightHandEL[0].hideStatus === 2) {
-				eagleRightHandEL.animate({
-					bottom: 3,
-					left: -25
-				}, 300, function() {
-					setTimeout(function() {
-						if (eagleRightHandEL[0].hideStatus === 2) {
-							eagleRightHandEL.animate(eagleHandHidedStatus[1], 200);
-						}
-					}, 500);
-				});
-			}
-		};
-		eagleShow();
-	</script>
+    });
+    var eagleShow = function() {
+        $(".eagel-box").animate({
+            bottom: -6
+        }, 1000, function() {
+            this.style.zIndex = 100;
+        });
+    };
+    /**
+     * the hiding step control
+     * @param {Object} now
+     * @param {Object} fx
+     */
+    var hidingStep = function(now, fx) {
+        if (fx.prop === "bottom") {
+            now = Math.floor(now);
+            if (now === 3 && this.hideStatus !== 1) {
+                this.classList.add("hiding");
+                this.hideStatus = 1;
+            } else if (now === 5 && this.hideStatus !== 2) {
+                this.classList.remove("hiding");
+                this.classList.add("hided");
+                this.hideStatus = 2;
+            }
+        }
+    };
+    /**
+     * the eagel peak
+     */
+    var eaglePeek = function() {
+        if (eagleRightHandEL[0].hideStatus === 2) {
+            eagleRightHandEL.animate({
+                bottom: 3,
+                left: -25
+            }, 300, function() {
+                setTimeout(function() {
+                    if (eagleRightHandEL[0].hideStatus === 2) {
+                        eagleRightHandEL.animate(eagleHandHidedStatus[1], 200);
+                    }
+                }, 500);
+            });
+        }
+    };
+    eagleShow();
+</script>
 
 </body>
 

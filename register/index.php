@@ -246,7 +246,7 @@
 				<div class="form-action">
 					<span>
 						已有帐号？
-						<a href="../login/">点击登录</a>
+						<a href="../">点击登录</a>
 					</span>
 
 				</div>
