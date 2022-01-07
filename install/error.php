@@ -5,14 +5,23 @@
 $config_file = '../config.php';
 
 if (file_exists($config_file)) {
-	// 判断用户是否有过登录操作
-	if (strlen($_COOKIE["User_name"]) == 0){
-		header("refresh:5;url='../login'");
+	// 当配置文件存在时检查数据库是否存在，如果不存在就执行安装
+	include_once "../config.php";
+	$DB_NAME = DB_NAME;
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+	$sql = "USE $DB_NAME";
+	$result_index = mysqli_query($conn, $sql);
+	mysqli_close($conn);
+	if ($result_index) {
+		// 配置文件在，数据库在，未登录
+		if (strlen($_COOKIE["User_name"]) == 0) {
+			header("refresh:0;url='../login'");
+			exit();
+		}
+		// 配置文件在，数据库在，已登录
+		header("refresh:0;url=../user");
 		exit();
 	}
-	// 文件存在并登录过则跳转到用户信息界面（默认用户admin，默认密码admin@123）
-	header("refresh:5;url=../user");
-	exit();
 }
 ?>
 <!DOCTYPE html>

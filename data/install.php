@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:text/html;charset=utf-8");
+// 是否为表单提交
 if(!isset($_POST['Submit'])) {
 	header("refresh:0;url=../");
 	exit();

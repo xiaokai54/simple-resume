@@ -1,4 +1,5 @@
 <?php
+// 是否为表单提交
 if(!isset($_POST['submit'])) {
 	header("refresh:0;url=../");
 	exit();
