@@ -22,7 +22,7 @@ if ($info_user['user_full_name'] == "default" || $info_user['user_intro'] == "de
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>About Me</title>
+	<title>About </title>
 	<meta name="description" content="">
 
 <!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
