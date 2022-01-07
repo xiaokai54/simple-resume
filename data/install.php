@@ -44,7 +44,7 @@ $result_admin_password = password_hash($admin_password,PASSWORD_BCRYPT);
 //连接数据库
 include_once "con_mysql.php";
 // 匹配用户输入的值，查询特定字段，针对性使用sql语句
-$sql_login_info = "INSERT INTO `login_info`(
+$sql_login_info = "INSERT INTO .`login_info`(
 	`id`,
 	`user_name`,
 	`user_password`,
@@ -56,7 +56,7 @@ VALUES(
 	'$result_admin_password',
 	'$admin_email'
 )";
-$sql_user_info = "INSERT INTO `user_info`(
+$sql_user_info = "INSERT INTO .`user_info`(
 	`id`,
 	`user_name`,
 	`user_full_name`,

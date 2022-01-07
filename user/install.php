@@ -1,3 +1,27 @@
+<?php
+// 定义主配置文件
+$config_file = '../config.php';
+
+if (file_exists($config_file)) {
+	// 当配置文件存在时检查数据库是否存在，如果不存在就执行安装
+	include_once "../config.php";
+	$DB_NAME = DB_NAME;
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+	$sql = "USE $DB_NAME";
+	$result_index = mysqli_query($conn, $sql);
+	mysqli_close($conn);
+	if ($result_index) {
+		// 配置文件在，数据库在，未登录
+		if (strlen($_COOKIE["User_name"]) == 0) {
+			header("refresh:0;url='./'");
+			exit();
+		}
+		// 配置文件在，数据库在，已登录
+		header("refresh:0;url=./user");
+		exit();
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -50,10 +74,10 @@
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="pass2">重复密码 <span class="description">（必填）</span></label>
+						<label for="admin_password_confirm">重复密码 <span class="description">（必填）</span></label>
 					</th>
 					<td>
-						<input name="admin_password2" type="password" id="pass2" autocomplete="off" value="admin@123">
+						<input name="admin_password2" type="password" id="admin_password_confirm"  value="admin@123">
 					</td>
 				</tr>
 				<tr class="pw-weak" style="display: none;">

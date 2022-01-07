@@ -130,7 +130,7 @@ mysqli_close($conn);
 
 // 判断注册操作是否成功
 if ($result_login_info && $result_user_info){
-	echo "<script>alert('注册成功!!!');location.href='../login';</script>";
+	echo "<script>alert('注册成功!!!');location.href='../';</script>";
 }else{
 	echo "<script>alert('注册失败\\n请联系网站管理员!!!');history.back();</script>";
 }

@@ -1,14 +1,18 @@
 ﻿<?php
-$cookie_user_name = $_COOKIE["User_name"];
+$cookie_user_name = base64_decode($_COOKIE["User_name"]);
 // 判断用户是否登录过
-if (strlen($cookie_user_name) == 0){
-	header("refresh:0;url='../login'");
+if (strlen(base64_decode($cookie_user_name)) == 0){
+	header("refresh:0;url='../'");
 	exit();
 }
 include_once "../data/con_mysql.php";
-$str = "SELECT * FROM `user_info` where user_name = '$cookie_user_name'";
-$result = mysqli_query($conn, $str);
+$sql = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+$result = mysqli_query($conn, $sql);
 $info_user = mysqli_fetch_assoc($result);
+if ($info_user['user_full_name'] == "default" || $info_user['user_intro'] == "default text"){
+	header("refresh:0;url='../user/change-information.php'");
+	exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN" class="ace ace-card-on ace-tab-nav-on ace-main-nav-on ace-sidebar-on" data-theme-color="#c0e3e7">

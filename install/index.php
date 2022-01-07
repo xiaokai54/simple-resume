@@ -14,8 +14,8 @@ if (file_exists($config_file)) {
     mysqli_close($conn);
     if ($result_index) {
 		// 配置文件在，数据库在，未登录
-        if (strlen($_COOKIE["User_name"]) == 0) {
-            header("refresh:0;url='../login'");
+        if (strlen(base64_decode($_COOKIE["User_name"])) == 0) {
+            header("refresh:0;url='../'");
             exit();
         }
 		// 配置文件在，数据库在，已登录

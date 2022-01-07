@@ -1,10 +1,18 @@
 <?php
+//header("Content-Type:text/html;charset=utf-8");
+//连接数据库
+include_once "../data/con_mysql.php";
+$cookie_user_name = base64_decode($_COOKIE["User_name"]);
+$sql = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+$result = mysqli_query($conn, $sql);
+$info_user = mysqli_fetch_assoc($result);
+
 // 是否为表单提交
 if(!isset($_POST['submit'])) {
 	header("refresh:0;url=../");
 	exit();
 }
-header("Content-Type:text/html;charset=utf-8");
+
 //在后端获取前端表单数据的方法是使用全局数组$_GET或$_POST
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -33,10 +41,8 @@ else{
 		exit();
 	}
 }
-//连接数据库
-include_once "con_mysql.php";
 
-// 匹配用户输入的值，查询特定字段，针对性使用sql语句
+//// 匹配用户输入的值，查询特定字段，针对性使用sql语句
 if (strpos($username,'@')){
 	$sql = "select * from .login_info where user_email = '$username'";
 }elseif(preg_match('/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/',$username)){
@@ -54,17 +60,12 @@ $confirm_password = password_verify($password,$result_user["user_password"]);
 if($result){
 	// 密码正确
 	if ($confirm_password){
-		echo "<script>alert('登录成功！');location.href='../';</script>";
 		// cookie 缓存用户名
-		setcookie("User_name",$result_user["user_name"],time()+1200,'/');
+		setcookie("User_name",base64_encode($username),time()+3600,'/');
+		echo "<script>alert('登录成功！');location.href='../user';</script>";
 		exit();
-	}else{
-		// 密码错误
-		echo "<script>alert('用户名或密码错误\\n请重新输入');history.back();</script>";
 	}
 }else{
-	echo "<script>alert('用户名或密码错误\\n请注册');</script>";
-	echo "<script>alert('即将自动跳转至注册页面');location.href='../register';</script>";
+	echo "<script>alert('请注册\\n即将自动跳转至注册页面');location.href='../register';</script>";
 }
 exit();
-?>

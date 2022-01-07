@@ -16,7 +16,7 @@ if (file_exists($config_file)) {
 		exit();
 	}
 	// 判断用户是否有过登录操作
-	if (strlen($_COOKIE["User_name"]) == 0){
+	if (strlen(base64_encode($_COOKIE["User_name"])) == 0){
 //		header("refresh:0;url='./login'");
 		require "login.php";
 		exit();

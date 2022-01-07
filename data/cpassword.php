@@ -80,7 +80,7 @@ $result = mysqli_query($conn,$sql);
 mysqli_close($conn);
 if($result){
 	echo "<script>alert('更新密码成功');location.href='../login'</script>";
-	setcookie("User_name",$user_name,time()+3600,'/');
+	setcookie("User_name",base64_encode($user_name),time()+3600,'/');
 }
 else{
 	echo "<script>alert('更新密码失败');history.back();</script>";

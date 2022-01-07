@@ -1,9 +1,17 @@
 ﻿<?php
-$cookie_user_name = $_COOKIE["User_name"];
+$cookie_user_name = base64_decode($_COOKIE["User_name"]);
 // 判断用户是否登录过
 if (strlen($cookie_user_name) == 0){
-    header("refresh:0;url='../login'");
-    exit();
+	header("refresh:0;url='../'");
+	exit();
+}
+include_once "../data/con_mysql.php";
+$sql = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+$result = mysqli_query($conn, $sql);
+$info_user = mysqli_fetch_assoc($result);
+if ($cookie_user_name == "admin"){
+	echo "<script>alert('admin用户无法修改信息\\n5秒后跳转到用户主页');</script>";
+	header("refresh:5;url=./");
 }
 ?>
 <!DOCTYPE html>
@@ -108,7 +116,7 @@ if (strlen($cookie_user_name) == 0){
 
 							<!-- START: PAGE CONTENT -->
 
-							<h2 class="title-lg text-upper padd-box">后台编辑</h2>
+<!--							<h2 class="title-lg text-upper padd-box">后台编辑</h2>-->
 
 							<div class="padd-box-xs">
 								<header class="contact-head">
@@ -124,53 +132,53 @@ if (strlen($cookie_user_name) == 0){
 									<div class="form-group">
 										<label class="form-label" for="user_name">昵称</label>
 										<div class="form-item-wrap">
-											<input id="user_name" class="form-item" type="text" name="user_name">
+											<input id="user_name" class="form-item" type="text" name="user_name" placeholder="">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-label" for="user_fullname">姓名</label>
 										<div class="form-item-wrap">
-											<input id="user_fullname" class="form-item" type="text" name="user_fullname">
+											<input id="user_fullname" class="form-item" type="text" name="user_fullname" placeholder="">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-label" for="user_address">用户地址</label>
 										<div class="form-item-wrap">
-											<input id="user_address" class="form-item" type="text" name="user_address">
+											<input id="user_address" class="form-item" type="text" name="user_address" placeholder="<?php echo $info_user['user_address'];?>">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="form-label" for="user_tel">手机号码</label>
 										<div class="form-item-wrap">
-											<input id="user_tel" class="form-item" type="tel" name="user_tel">
+											<input id="user_tel" class="form-item" type="tel" name="user_tel" placeholder="">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="form-label" for="user_email">用户邮箱</label>
 										<div class="form-item-wrap">
-											<input id="user_email" class="form-item" type="email" name="user_email">
+											<input id="user_email" class="form-item" type="email" name="user_email" placeholder="admin@localhost">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="form-label" for="user_occupation">用户职业</label>
 										<div class="form-item-wrap">
-											<input id="user_occupation" class="form-item" type="text" name="user_occupation">
+											<input id="user_occupation" class="form-item" type="text" name="user_occupation" placeholder="<?php echo $info_user['user_occupation'];?>">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="form-label" for="user_d_o_f">出生日期</label>
 										<div class="form-item-wrap">
-											<input id="user_d_o_f" class="form-item" type="date" name="user_d_o_f">
+											<input id="user_d_o_f" class="form-item" type="date" name="user_d_o_f" placeholder="">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-label" for="user_website">个人网站</label>
 										<div class="form-item-wrap">
-											<input id="user_website" class="form-item" type="url" name="user_website">
+											<input id="user_website" class="form-item" type="url" name="user_website" placeholder="<?php echo $info_user['user_website'];?>">
 										</div>
 									</div>
 

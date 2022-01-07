@@ -1,14 +1,14 @@
 ﻿<?php
-$cookie_user_name = $_COOKIE["User_name"];
+$cookie_user_name = base64_decode($_COOKIE["User_name"]);
 // 判断用户是否登录过
 if (strlen($cookie_user_name) == 0){
-    header("refresh:0;url='../login'");
+    header("refresh:0;url='../'");
     exit();
 }
 include_once "../data/con_mysql.php";
 
-$str = "SELECT * FROM `user_info` where user_name = '$cookie_user_name'";
-$result = mysqli_query($conn, $str);
+$sql = "SELECT * FROM .`user_info` where user_name = '$cookie_user_name'";
+$result = mysqli_query($conn, $sql);
 $info_user = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
