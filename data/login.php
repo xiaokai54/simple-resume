@@ -61,7 +61,7 @@ if($result){
 	// 密码正确
 	if ($confirm_password){
 		// cookie 缓存用户名
-		setcookie("User_name",base64_encode($username),time()+3600,'/');
+		setcookie("User_name",base64_encode($result_user['user_name']),time()+3600,'/');
 		echo "<script>alert('登录成功！');location.href='../user';</script>";
 		exit();
 	}

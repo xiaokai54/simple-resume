@@ -22,7 +22,7 @@ if ($cookie_user_name == "admin"){
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Change Information</title>
+	<title>Change <?php echo $info_user['user_name'];?> Information</title>
 	<meta name="description" content="">
 
 <!--	<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
@@ -42,6 +42,9 @@ if ($cookie_user_name == "admin"){
 
 	<!-- Modernizer -->
 	<script type="text/javascript" src="js/vendor/modernizr-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		alert("如不修改则不要填！！！");
+	</script>
 </head>
 
 <body>
@@ -116,7 +119,7 @@ if ($cookie_user_name == "admin"){
 
 							<!-- START: PAGE CONTENT -->
 
-<!--							<h2 class="title-lg text-upper padd-box">后台编辑</h2>-->
+							<h2 class="title-lg text-upper padd-box"><?php echo $info_user['user_name'];?></h2>
 
 							<div class="padd-box-xs">
 								<header class="contact-head">
@@ -158,7 +161,7 @@ if ($cookie_user_name == "admin"){
 									<div class="form-group">
 										<label class="form-label" for="user_email">用户邮箱</label>
 										<div class="form-item-wrap">
-											<input id="user_email" class="form-item" type="email" name="user_email" placeholder="admin@localhost">
+											<input id="user_email" class="form-item" type="email" name="user_email" placeholder="<?php echo $info_user['user_address'];?>">
 										</div>
 									</div>
 
